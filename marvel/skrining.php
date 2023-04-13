@@ -7,19 +7,13 @@ session_start();
 if(isset($_SESSION['user_id'])) {
   $user_id = $_SESSION['user_id'];
   // query untuk mengambil data dari database menggunakan user_id
-  $query = "SELECT * FROM skrining WHERE user_id = $user_id";
+  $query = "SELECT * FROM users WHERE user_id = $user_id";
   // menjalankan query dan mengambil hasilnya
   $result = mysqli_query($conn, $query);
   // menampilkan data dari hasil query
   while($row = mysqli_fetch_array($result)) {
-    // tampilkan data di sini
-  }
-} else {
-  // jika user belum login, alihkan ke halaman login
-  header("Location: login.php");
-  exit();
-}
-?>
+  ?>  
+ 
 
 <!doctype html>
 <html lang="en">
@@ -98,7 +92,14 @@ https://www.tooplate.com/view/2115-marvel
                   <div class="about-text">
                         <small class="small-text">Welcome to <span class="mobile-block">CALM</span></small>
                         <h1 class="animated animated-text">
-                            <span class="mr-2">Hai teman, sepertinya kamu sedang merasa</span>
+                            <span class="mr-2">Hai <?php echo $row['name']?>, sepertinya kamu sedang merasa</span>
+                            <?php  }
+                                } else {
+                                  // jika user belum login, alihkan ke halaman login
+                                  header("Location: login.php");
+                                  exit();
+                                }
+                                ?>
                                 <div class="animated-info">
                                     <span class="animated-item">Sedih</span>
                                     <span class="animated-item">Cemas</span>
@@ -107,7 +108,7 @@ https://www.tooplate.com/view/2115-marvel
                         </h1>
 
                         <p>Bolehkan aku membantumu melakukan skrining dini untuk mengecek apakah
-                          kamu dalam kondisi depresi tingkat apa. karna itu, aku butuh bantuanmu untuk mengisi kuisioner dibawah.
+                          kamu dalam kondisi depresi tingkat tertentu. Namun, aku butuh bantuanmu untuk mengisi beberapa pertanyaan.
                           bisakah kamu membantuku?
                         </p>
                         
@@ -695,7 +696,7 @@ https://www.tooplate.com/view/2115-marvel
             </table>
             <div class="w3-center">
               <p id="jawaban_test">Jawaban Anda Sudah Lengkap?</p>
-              <button type="submit" name="submit" class="w3-button w3-theme-d1 w3-margin">CEK HASIL TEST</button>
+              <button type="submit" name="submit" class="btn custom-btn custom-btn-bg custom-btn-link">CEK HASIL TEST</button>
             </div>
           </form>
         </section>
