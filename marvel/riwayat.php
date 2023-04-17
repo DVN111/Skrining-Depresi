@@ -44,6 +44,18 @@ if (isset($_SESSION['user_id'])) {
 .table tbody td {
   vertical-align: middle;
 }
+    
+/* CSS untuk menempatkan modal agak ke bawah */
+.modal-dialog {
+  position: relative;
+  top: 20%;
+  transform: translateY(-50%);
+}
+
+button{
+  margin-bottom: 50px;
+  text-align: center;
+}
     </style>
 
     <!--
@@ -53,6 +65,7 @@ Tooplate 2115 Marvel
 https://www.tooplate.com/view/2115-marvel
 
 -->
+
   </head>
 
   <body>
@@ -91,9 +104,85 @@ https://www.tooplate.com/view/2115-marvel
     </nav>
 
 
+    
+    
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="chartModal" tabindex="-1" role="dialog" aria-labelledby="chartModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="chartModalLabel">Grafik Tingkat Depresi</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Canvas untuk grafik -->
+        <canvas id="myChart"></canvas>
+        <!-- Script untuk membuat grafik -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+          // mengambil data dari database
+          <?php
+          $data = array();
+          $query = "SELECT tanggal, nilai FROM skrining WHERE user_id = $user_id ORDER BY tanggal ASC";
+          $result = mysqli_query($conn, $query);
+          while ($row = mysqli_fetch_array($result)) {
+            $data[] = array($row['tanggal'], $row['nilai']);
+          }
+          ?>
+
+          // membuat grafik dengan Chart.js
+          var ctx = document.getElementById('myChart').getContext('2d');
+          var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: [
+                <?php
+                foreach ($data as $d) {
+                  echo "'" . $d[0] . "', ";
+                }
+                ?>
+              ],
+              datasets: [{
+                label: 'Tingkat Depresi',
+                data: [
+                  <?php
+                  foreach ($data as $d) {
+                    echo "'" . $d[1] . "', ";
+                  }
+                  ?>
+                ],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true
+                  }
+                }]
+              }
+            }
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+    
     <!-- ABOUT -->
     <section class="about full-screen d-lg-flex justify-content-center align-items-center" id="about">
       <div class="container">
+      <button type="button" data-toggle="modal" data-target="#chartModal" class="btn custom-btn custom-btn-bg custom-btn-link">
+      <i class="fa-solid fa-chart-linemr-2 "></i>Tampilkan Grafik
+    </button>
         <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
         <div class="elfsight-app-2568c508-ca74-4b66-b7da-08d09f76f2d7"></div>
 
@@ -144,10 +233,14 @@ if (!$conn) {
 }
 
 //menutup koneksi ke database
-mysqli_close($conn);
+
 ?>
       </div>
     </section>
+
+
+<!-- ABOUT -->
+<
 
 
 
@@ -163,6 +256,27 @@ mysqli_close($conn);
       </div>
     </footer>
 
+
+    <!-- Animasi ketika tombol di klik -->
+<script>
+  $(document).ready(function() {
+    $('button[data-toggle="modal"]').click(function() {
+      var target = $(this).data('target');
+      $(target).addClass('show');
+      setTimeout(function() {
+        $(target).addClass('in');
+      }, 150);
+      $('body').addClass('modal-open');
+    });
+    $('.modal').click(function(e) {
+      if (e.target == this) {
+        $(this).removeClass('show in');
+        $('body').removeClass('modal-open');
+      }
+    });
+  });
+</script>
+
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -171,6 +285,8 @@ mysqli_close($conn);
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/smoothscroll.js"></script>
     <script src="js/custom.js"></script>
+    
+
 
   </body>
 

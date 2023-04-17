@@ -750,7 +750,7 @@ https://www.tooplate.com/view/2115-marvel
           $saran = "Perlu bantuan profesional berupa konseling dan terapi obat, kemungkinan untuk rawat inap";
         }
 
-        $query = "INSERT INTO skrining (user_id,tanggal, hasil, saran) VALUES ('$user_id','$tanggal','$tingkat_dep', '$saran')";
+        $query = "INSERT INTO skrining (user_id,tanggal, hasil, saran, nilai) VALUES ('$user_id','$tanggal','$tingkat_dep', '$saran','$total_nilai')";
 
         mysqli_query($conn, $query);
 
