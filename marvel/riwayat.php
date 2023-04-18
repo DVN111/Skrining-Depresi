@@ -89,6 +89,9 @@ https://www.tooplate.com/view/2115-marvel
             <li class="active nav-item">
               <a href="riwayat.php" class="nav-link"><span data-hover="Riwayat">Riwayat</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" id="logoutBtn"><span data-hover="Logout">Logout</span></a>
+              </li>
           </ul>
 
           <ul class="navbar-nav ml-lg-auto">
@@ -256,6 +259,26 @@ if (!$conn) {
       </div>
     </footer>
 
+    <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="margin-top: -1%;">
+    <!-- Modal content-->
+    <div class="modal-content text-center">
+      <div class="modal-header">
+      <h4 class="modal-title">Konfirmasi Logout</h4>  
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+      </div>
+      <div class="modal-body">
+        <img src="images/undraw/undraw_login_re_4vu2.svg" style="width: 300px;" class="img-responsive mx-auto d-block">
+        <p class="text-center">Anda yakin ingin logout?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+        <button type="button" id="confirmBtn" class="btn btn-danger">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Animasi ketika tombol di klik -->
 <script>
@@ -286,7 +309,23 @@ if (!$conn) {
     <script src="js/smoothscroll.js"></script>
     <script src="js/custom.js"></script>
     
+    <script>
+  var logoutBtn = document.getElementById("logoutBtn");
+  var modal = document.getElementById("myModal");
+  var confirmBtn = document.getElementById("confirmBtn");
 
+  logoutBtn.onclick = function() {
+    $('#myModal').modal('show');
+  }
+
+  function logout() {
+  // panggil file logout.php untuk melakukan proses logout
+  window.location.href = "logout.php";
+}
+document.getElementById("confirmBtn").onclick = function() {
+    logout();
+  }
+</script>
 
   </body>
 
