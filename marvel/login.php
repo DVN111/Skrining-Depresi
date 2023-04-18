@@ -25,12 +25,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_assoc($result);
 
-  if(mysqli_num_rows($result) == 1) {
+  if(mysqli_num_rows($result) !=0) {
     // Login berhasil, simpan user_id pada session
     $_SESSION['user_id'] = $row['user_id'];
 
     // Redirect ke halaman utama
-    header("Location: skrining.php");
+    header("Location: complete.php");
     exit;
   } else {
     // Login gagal, tampilkan pesan error

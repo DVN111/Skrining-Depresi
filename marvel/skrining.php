@@ -66,6 +66,9 @@ https://www.tooplate.com/view/2115-marvel
           <li class="nav-item">
             <a href="riwayat.php" class="nav-link"><span data-hover="Riwayat">Riwayat</span></a>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" onclick="logout()"><span data-hover="Logout">Logout</span></a>
+          </li>
         </ul>
 
         <ul class="navbar-nav ml-lg-auto">
@@ -808,6 +811,22 @@ https://www.tooplate.com/view/2115-marvel
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/smoothscroll.js"></script>
   <script src="js/custom.js"></script>
+  <script>
+    function logout() {
+	// Membuat XMLHttpRequest untuk memanggil script logout.php pada server
+	const xhr = new XMLHttpRequest();
+	xhr.open("GET", "logout.php", true);
+	xhr.send();
+
+	// Ketika request selesai, pindah ke halaman login
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4 && xhr.status === 200) {
+			window.location.href = "login.php";
+		}
+	}
+}
+
+  </script>
 
 </body>
 
