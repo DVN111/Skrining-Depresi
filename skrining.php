@@ -81,6 +81,7 @@ https://www.tooplate.com/view/2115-marvel
         </div>
       </nav>
 
+      <!-- SECTION PEMBUKA DI HALAMAN KUISIONER -->
       <section class="project full-screen d-lg-flex justify-content-center align-items-center" id="project">
         <div class="container">
           <div class="row">
@@ -125,7 +126,7 @@ https://www.tooplate.com/view/2115-marvel
         </div>
       </section>
 
-      <!-- ABOUT -->
+      <!-- INI SECTION KUISIONER PERTANYAAN -->
       <section class="about full-screen d-lg-flex justify-content-center align-items-center" id="about">
         <div class="container">
           <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
@@ -700,6 +701,7 @@ https://www.tooplate.com/view/2115-marvel
         </div>
       </section>
 
+      <!-- FORM UNTUK KUISIONER -->
       <?php
       // Mengecek apakah form telah disubmit atau belum
       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -755,9 +757,7 @@ https://www.tooplate.com/view/2115-marvel
 
       ?>
         
-        <!-- tes -->
-        <!-- tes -->
-        <!-- tes -->
+        <!-- HASIL KUISIONER -->
         <section class="resume py-5 d-lg-flex justify-content-center align-items-center" id="resume">
           <div class="container">
             <div class="row">
@@ -798,6 +798,8 @@ https://www.tooplate.com/view/2115-marvel
           </div>
         </footer>
 
+
+<!-- MODAL SISTEM LOGOUT -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog" style="margin-top: 10%;">
     <!-- Modal content-->
