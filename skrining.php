@@ -754,7 +754,7 @@ https://www.tooplate.com/view/2115-marvel
         mysqli_close($conn);
 
       ?>
-
+<!-- tes -->
         <section class="resume py-5 d-lg-flex justify-content-center align-items-center" id="resume">
           <div class="container">
             <div class="row">
