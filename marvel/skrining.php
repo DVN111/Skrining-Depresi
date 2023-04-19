@@ -131,7 +131,7 @@ https://www.tooplate.com/view/2115-marvel
           <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
           <div class="elfsight-app-2568c508-ca74-4b66-b7da-08d09f76f2d7"></div>
           <section class="w3-section w3-responsive">
-            <form action="" method="post">
+            <form action="#resume" method="post">
               <h3>Ini Kuisioner Untukmu, Isi sesuai keadaanmu ya :)</h3>
 
 
@@ -795,18 +795,18 @@ https://www.tooplate.com/view/2115-marvel
           </div>
         </footer>
 
-        <div id="myModal" class="modal fade" role="dialog">
+<div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog" style="margin-top: 10%;">
     <!-- Modal content-->
     <div class="modal-content text-center">
       <div class="modal-header">
-      <h4 class="modal-title">Konfirmasi Logout</h4>  
+      <h4 class="modal-title">Apakah kamu ingin pergi?</h4>  
       <button type="button" class="close" data-dismiss="modal">&times;</button>
         
       </div>
       <div class="modal-body">
         <img src="images/undraw/undraw_login_re_4vu2.svg" style="width: 300px;" class="img-responsive mx-auto d-block">
-        <p class="text-center">Anda yakin ingin logout?</p>
+        <p class="text-center">Kuharap kita bertemu lagi ya, aku akan selalu menerimamu disini.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

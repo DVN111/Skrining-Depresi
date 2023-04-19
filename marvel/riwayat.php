@@ -56,6 +56,20 @@ button{
   margin-bottom: 50px;
   text-align: center;
 }
+
+.green {
+  background-color: #ccffcc;
+}
+.yellow {
+  background-color: #ffffcc;
+}
+.orange {
+  background-color: #ffe6cc;
+}
+.red {
+  background-color: #ffcccc;
+}
+
     </style>
 
     <!--
@@ -159,8 +173,8 @@ https://www.tooplate.com/view/2115-marvel
                   }
                   ?>
                 ],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(255, 194, 0, 0.2)',
+                borderColor: 'rgba(255, 194, 0, 1)',
                 borderWidth: 1
               }]
             },
@@ -210,19 +224,45 @@ if (!$conn) {
   echo '<th scope="col">Tanggal</th>';
   echo '<th scope="col">Hasil</th>';
   echo '<th scope="col">Saran</th>';
-  echo '<th colspan="2" scope="col">Aksi</th>';
+  // echo '<th colspan="2" scope="col">Aksi</th>';
   echo '</tr>';
   echo '</thead>';
   echo '<tbody>';
   $i = 1;
+  // while ($row = mysqli_fetch_array($result)) {
+  //   echo '<tr>';
+  //   echo '<th scope="row">' . $i . '</th>';
+  //   echo '<td>' . $row['tanggal'] . '</td>';
+  //   echo '<td>' . $row['hasil'] . '</td>';
+  //   echo '<td>' . $row['saran'] . '</td>';
+  //   // echo '<td><a href="edit.php?id=' . $row['id'] . '" class="btn btn-primary">Ubah</a></td>';
+  //   // echo '<td><a href="delete.php?id=' . $row['id'] . '" class="btn btn-danger">Hapus</a></td>';
+  //   echo '</tr>';
+  //   $i++;
+  // }
   while ($row = mysqli_fetch_array($result)) {
-    echo '<tr>';
+    // menentukan warna baris berdasarkan nilai 'hasil'
+    $color = '';
+    switch ($row['hasil']) {
+      case 'Normal':
+        $color = 'green';
+        break;
+      case 'Depresi Ringan':
+        $color = 'yellow';
+        break;
+      case 'Depresi Sedang':
+        $color = 'orange';
+        break;
+      case 'Depresi Berat':
+        $color = 'red';
+        break;
+    }
+
+    echo '<tr class="' . $color . '">';
     echo '<th scope="row">' . $i . '</th>';
     echo '<td>' . $row['tanggal'] . '</td>';
     echo '<td>' . $row['hasil'] . '</td>';
     echo '<td>' . $row['saran'] . '</td>';
-    echo '<td><a href="edit.php?id=' . $row['id'] . '" class="btn btn-primary">Ubah</a></td>';
-    echo '<td><a href="delete.php?id=' . $row['id'] . '" class="btn btn-danger">Hapus</a></td>';
     echo '</tr>';
     $i++;
   }
@@ -264,13 +304,13 @@ if (!$conn) {
     <!-- Modal content-->
     <div class="modal-content text-center">
       <div class="modal-header">
-      <h4 class="modal-title">Konfirmasi Logout</h4>  
+      <h4 class="modal-title">Apakah kamu ingin pergi?</h4>  
       <button type="button" class="close" data-dismiss="modal">&times;</button>
         
       </div>
       <div class="modal-body">
         <img src="images/undraw/undraw_login_re_4vu2.svg" style="width: 300px;" class="img-responsive mx-auto d-block">
-        <p class="text-center">Anda yakin ingin logout?</p>
+        <p class="text-center">Kuharap kita bertemu lagi ya, aku akan selalu menerimamu disini.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
