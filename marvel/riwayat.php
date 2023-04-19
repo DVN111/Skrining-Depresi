@@ -128,6 +128,8 @@ https://www.tooplate.com/view/2115-marvel
         <button type="button" data-toggle="modal" data-target="#chartModal" class="btn custom-btn custom-btn-bg custom-btn-link">
           <i class="fa-solid fa-chart-linemr-2 "></i>Tampilkan Grafik
         </button>
+
+        <!-- MEDIA PLAYER AUDIO PENENANGAN -->
         <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
         <div class="elfsight-app-2568c508-ca74-4b66-b7da-08d09f76f2d7"></div>
 

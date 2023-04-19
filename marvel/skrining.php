@@ -129,8 +129,11 @@ https://www.tooplate.com/view/2115-marvel
       <!-- INI SECTION KUISIONER PERTANYAAN -->
       <section class="about full-screen d-lg-flex justify-content-center align-items-center" id="about">
         <div class="container">
+          
+        <!-- MEDIA PLAYER AUDIO PENENANGAN -->
           <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
           <div class="elfsight-app-2568c508-ca74-4b66-b7da-08d09f76f2d7"></div>
+
           <section class="w3-section w3-responsive">
             <form action="#resume" method="post">
               <h3>Ini Kuisioner Untukmu, Isi sesuai keadaanmu ya :)</h3>
